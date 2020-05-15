@@ -21,4 +21,11 @@ class MealsController < ApplicationController
     erb :"/meals/new"
   end
 
+  post "/meals" do
+    user = Helpers.current_user(session)
+    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :user_id => user.id)
+    redirect '/meals'
+
+  end
+
 end

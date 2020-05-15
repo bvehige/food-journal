@@ -1,6 +1,20 @@
-<h2>Welcome</h2>
+<h2>Welcome <%=@user.username%>!</h2>
 
-
+<h3><%=@user.username%>'s Meal Journal</h3>
+<br>
+<ul>
+<% if !@user.meals.empty? %> 
+    <% @user.meals.each do |meal| %>
+        <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %></li>
+        <br><br>
+    <% end %>
+    <a href = "/meals/new"><button>Create a New Meal</button></a>
+<% else %>
+    <p>You haven't created any meals yet in your journal.  <a href = "/meals/new"><button>Create a New Meal</button></a><br> 
+    </p>
+<% end %>
+    </ul>
+    <br>
 
 
 <a href = "/logout"><button>Log Out</button></a>
