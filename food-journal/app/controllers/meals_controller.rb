@@ -23,7 +23,7 @@ class MealsController < ApplicationController
 
   post "/meals" do
     user = Helpers.current_user(session)
-    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :user_id => user.id)
+    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating =>["rating"], :user_id => user.id)
     redirect '/meals'
   end
 
@@ -41,7 +41,7 @@ class MealsController < ApplicationController
 
   patch "/meals/:id" do
     @meal = Meal.find(params[:id])
-    @meal.update(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"])
+    @meal.update(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating => params["rating"])
     @meal.save
     redirect "/meals/#{@meal.id}"
   end

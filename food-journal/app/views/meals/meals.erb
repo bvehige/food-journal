@@ -2,18 +2,17 @@
 
 <h3><%=@user.username%>'s Meal Journal</h3>
 <br>
-<ul>
 <% if !@user.meals.empty? %> 
     <% @user.meals.each do |meal| %>
-        <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %></li>
+        <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %> - Rating: <%= meal.rating %></li>
         <br><br>
     <% end %>
     <a href = "/meals/new"><button>Create a New Meal</button></a>
+    <br>
 <% else %>
     <p>You haven't created any meals yet in your journal.  <a href = "/meals/new"><button>Create a New Meal</button></a><br> 
     </p>
 <% end %>
-    </ul>
     <br>
 
 

@@ -10,10 +10,11 @@
     height: 100%;
     width: 100%;
   }
-
+  /* background-color: lightblue; */
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    
+    background-image: url("../../public/images/food2.png");
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
