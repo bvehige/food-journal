@@ -1,6 +1,9 @@
 require './config/environment'
+require 'sinatra/base'
+require 'rack-flash'
 
 class MealsController < ApplicationController
+   
 
   configure do
     set :public_folder, 'public'
@@ -17,13 +20,16 @@ class MealsController < ApplicationController
   end
 
   get "/meals/new" do
-    
+    if !Helpers.is_logged_in?(session)
+        redirect '/login'
+    end
     erb :"/meals/new"
   end
 
   post "/meals" do
     user = Helpers.current_user(session)
     meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating =>["rating"], :user_id => user.id)
+    flash[:created_meal_message] = "Successfully added a new meal."
     redirect '/meals'
   end
 
@@ -43,12 +49,14 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @meal.update(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating => params["rating"])
     @meal.save
+    flash[:edited_message] = "Successfully edited meal."
     redirect "/meals/#{@meal.id}"
   end
 
   post "/meals/:id/delete" do
     @meal = Meal.find(params[:id])
     @meal.delete
+    flash[:deleted_message] = "Successfully deleted meal"
     redirect "/meals"
   end
 

@@ -1,3 +1,7 @@
+<% if flash.has?(:edited_message) %>
+    <%= flash[:edited_message] %>
+<% end %>
+
 <h2>Individual Meal Details</h2>
 <ul>
 <b>Username: </b> <%= @user.username %><br><br>

@@ -1,3 +1,15 @@
+<% if flash.has?(:created_meal_message) %>
+    <%=flash[:created_meal_message] %>
+<% end %>
+<% if flash.has?(:sign_up_message) %>
+    <%= flash[:sign_up_message] %>
+<% end %>
+<% if flash.has?(:deleted_message) %>
+    <%= flash[:deleted_message] %>
+<% end %>
+<br><br>
+
+
 <h2>Welcome <%=@user.username%>!</h2>
 
 <h3><%=@user.username%>'s Meal Journal</h3>
