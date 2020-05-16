@@ -12,11 +12,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    # if Helpers.logged_in?
-    #   redirect '/meals'
-    # else
+    if Helpers.is_logged_in?(session)
+      redirect '/meals'
+    else
     erb :home
-    # end
+    end
   end
 
 end

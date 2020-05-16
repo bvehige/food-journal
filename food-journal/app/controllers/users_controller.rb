@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     else 
         erb :"/users/login"
     end
-    
+
   end
 
   get "/logout" do
