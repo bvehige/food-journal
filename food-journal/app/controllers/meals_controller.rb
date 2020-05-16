@@ -23,9 +23,34 @@ class MealsController < ApplicationController
 
   post "/meals" do
     user = Helpers.current_user(session)
-    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :user_id => user.id)
+    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :user_id => user.id)
     redirect '/meals'
-
   end
+
+  get "/meals/:id" do
+    @meal = Meal.find(params[:id])
+    @user = Helpers.current_user(session)
+    erb :"/meals/show"
+  end
+
+  get "/meals/:id/edit" do
+    @meal = Meal.find(params[:id])
+    @user = Helpers.current_user(session)
+    erb :"/meals/edit"
+  end
+
+  patch "/meals/:id" do
+    @meal = Meal.find(params[:id])
+    @meal.update(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"])
+    @meal.save
+    redirect "/meals/#{@meal.id}"
+  end
+
+  post "/meals/:id/delete" do
+    @meal = Meal.find(params[:id])
+    @meal.delete
+    redirect "/meals"
+  end
+
 
 end

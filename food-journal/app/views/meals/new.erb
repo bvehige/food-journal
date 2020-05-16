@@ -1,8 +1,22 @@
 
 <h2>Create A New Meal</h2>
 <form method = "post" action = "/meals">
-    <label>Meal Name: </label>
-    <input type = "text" name = "name" id ="name"><br><br>
+    <label>Meal Type: </label>
+    <select id="name" name ="name">
+        <option value ="Breakfast">Breakfast</option>
+        <option value ="Lunch">Lunch</option>
+        <option value ="Dinner">Dinner</option>
+        <option value ="Snack">Snack</option>
+        <option value ="Sessert">Dessert</option>
+        </select>
+
+    <label>Prepared By: </label>
+    <select id="prepared_by" name ="prepared_by">
+        <option value ="Myself">Myself - at home</option>
+        <option value ="Restaurant">Restaurant</option>
+        <option value ="Restaurant-takeout">Restaurant - takeout</option>
+    </select>
+    <br><br>      
     <label>Meal Description: </label>
     <input type = "text" name = "description" id = "description"><br><br>
     <label>Meal Calories: </label>
@@ -12,3 +26,5 @@
     <br><br>
     <input type = "submit" value = "Create Meal">
 </form>
+<br><br>
+<a href = "/logout"><button>Log Out</button></a>
