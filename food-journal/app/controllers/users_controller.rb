@@ -13,17 +13,16 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do
-    @user = User.new(:username => params["username"], :email => params["email"], :password => params["password"])
-    if !@user.save
-        @errors = @user.errors.full_messages
-    # if params[:username].empty? || params[:email].empty? || params[:password].empty?
-        # flash[:sign_up_alert] = "All inputs required. Please don't leave any input blank."
+    params.each do |label, input|
+        if input.empty?
+        flash[:sign_up_alert] = "All inputs required. Please fill out the #{label} field."
         redirect '/signup'
-    else
-    session[:user_id] = user.id
-    flash[:sign_up_message] = "Successfully signed up."
-    redirect "/meals"
+        end
     end
+    @user = User.create(:username => params["username"], :email => params["email"], :password => params["password"])
+    session[:user_id] = @user.id
+    flash[:sign_up_message] = "Successfully Signed Up."
+    redirect "/meals"
   end
 
   get "/login" do
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect "/meals"
     else
-        flash[:login_error] = "Invalid login. Please try again" 
+        flash[:login_error] = "Invalid Login. Please Try Again" 
         erb :"/users/login"
     end
 

@@ -1,15 +1,11 @@
+<h1>Sign Up!</h1>
 
-# <% if flash.has?(:sign_up_alert) %>
-# <%= flash[:sign_up_alert] %>
-# <% end %>
 
-<% if @errors %>
-  <% @errors.each do |error| %>
-    <p style="color: red;"><%= error %></p>
-  <% end %>
+<% if flash.has?(:sign_up_alert) %>
+<p style="color: red;"><b><%= flash[:sign_up_alert] %></b></p>
 <% end %>
 
-<h1>Sign Up!</h1>
+
 
 <h3>To create a new food journal please fill out and submit the following information.</h3>
 <form action = "/signup" method = "POST">
@@ -22,6 +18,6 @@
     <label>Password: </label>
     <input type = "text" name = "password" id = "password">
     <br><br>
-    <input type = "submit" value = "Sign Up">
+    <input type = "submit" value = "Submit">
 
 </form>

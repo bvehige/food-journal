@@ -28,8 +28,8 @@ class MealsController < ApplicationController
 
   post "/meals" do
     user = Helpers.current_user(session)
-    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating =>["rating"], :user_id => user.id)
-    flash[:created_meal_message] = "Successfully added a new meal."
+    meal = Meal.create(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating =>params["rating"], :user_id => user.id)
+    flash[:created_meal_message] = "Successfully Added a New Meal."
     redirect '/meals'
   end
 
@@ -49,14 +49,14 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @meal.update(:name => params["name"], :description => params["description"], :calories => params["calories"], :date => params["date"], :prepared_by => params["prepared_by"], :rating => params["rating"])
     @meal.save
-    flash[:edited_message] = "Successfully edited meal."
+    flash[:edited_message] = "Successfully Edited Meal."
     redirect "/meals/#{@meal.id}"
   end
 
   post "/meals/:id/delete" do
     @meal = Meal.find(params[:id])
     @meal.delete
-    flash[:deleted_message] = "Successfully deleted meal"
+    flash[:deleted_message] = "Successfully Deleted Meal"
     redirect "/meals"
   end
 

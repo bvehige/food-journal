@@ -1,16 +1,16 @@
 <% if flash.has?(:edited_message) %>
-    <%= flash[:edited_message] %>
+<p style="color: red;"><b><%= flash[:edited_message] %></b></p>
 <% end %>
 
 <h2>Individual Meal Details</h2>
 <ul>
 <b>Username: </b> <%= @user.username %><br><br>
 <b>Date: </b> <%= @meal.date %><br>
-<b>Type: </b> <%= @meal.name %><br>
-<b>Prepared By: </b> <%= @meal.prepared_by %><br> 
-<b>Description: </b> <%= @meal.description %><br>
 <b>Calories: </b> <%= @meal.calories %><br>
+<b>Type: </b> <%= @meal.name %><br>
+<b>Prepared By: </b> <%= @meal.prepared_by %><br>
 <b>Rating: </b> <%= @meal.rating %><br>
+<b>Description: </b> <%= @meal.description %><br>
 </ul>
 
 <br>
@@ -18,6 +18,5 @@
 <br>
 <br>
 <a href ="/meals"><button>View All Your Meals</button></a>
-<br><br>
-<a href = "/logout"><button>Log Out</button></a>
+<br>
 

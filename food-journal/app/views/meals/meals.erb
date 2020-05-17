@@ -1,11 +1,11 @@
 <% if flash.has?(:created_meal_message) %>
-    <%=flash[:created_meal_message] %>
+<p style="color: red;"><b><%=flash[:created_meal_message] %></b></p>
 <% end %>
 <% if flash.has?(:sign_up_message) %>
-    <%= flash[:sign_up_message] %>
+<p style="color: red;"><b><%= flash[:sign_up_message] %></b></p>
 <% end %>
 <% if flash.has?(:deleted_message) %>
-    <%= flash[:deleted_message] %>
+<p style="color: red;"><b><%= flash[:deleted_message] %></b></p>
 <% end %>
 <br><br>
 
@@ -19,13 +19,10 @@
         <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %> - Rating: <%= meal.rating %></li>
         <br><br>
     <% end %>
-    <a href = "/meals/new"><button>Create a New Meal</button></a>
+    <a href = "/meals/new">Create a New Meal</a>
     <br>
 <% else %>
     <p>You haven't created any meals yet in your journal.  <a href = "/meals/new"><button>Create a New Meal</button></a><br> 
     </p>
 <% end %>
     <br>
-
-
-<a href = "/logout"><button>Log Out</button></a>

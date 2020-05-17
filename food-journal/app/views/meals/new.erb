@@ -1,7 +1,11 @@
 
 <h2>Create A New Meal</h2>
 <form method = "post" action = "/meals">
-    <label>Meal Type: </label>
+    <label><b>Meal Date: </b></label>
+    <input type = "date" name = "date" id = "date"><br><br>
+    <label><b>Meal Calories: </b></label>
+    <input type = "integer" name = "calories" id = "calories"><br><br>    
+    <label><b>Meal Type: </b></label><br>
     <select id="name" name ="name">
         <option value ="Breakfast">Breakfast</option>
         <option value ="Lunch">Lunch</option>
@@ -9,27 +13,25 @@
         <option value ="Snack">Snack</option>
         <option value ="Dessert">Dessert</option>
         </select>
-
-    <label>Prepared By: </label>
+    <br><br>
+    <label><b>Prepared By: </b></label><br>
     <select id="prepared_by" name ="prepared_by">
         <option value ="Myself">Myself - at home</option>
         <option value ="Restaurant">Restaurant</option>
         <option value ="Restaurant-takeout">Restaurant - takeout</option>
     </select>
     <br><br>      
-    <label>Meal Description: </label>
-    <input type = "text" name = "description" id = "description"><br><br>
-    <label>Meal Calories: </label>
-    <input type = "integer" name = "calories" id = "calories"><br><br>
-    <label>Meal Date: </label>
-    <input type = "date" name = "date" id = "date">
-    <label>Meal Rating: </label>
+    <label><b>Meal Rating: </b></label><br>
     <select id="rating" name ="rating">
-        <option value ="Yummy!">Yummy!</option>
-        <option value ="Not Yummy">Not Yummy</option>
-    </select>
+        <option value ="Yummy!!">Yummy!!</option>
+        <option value ="Meh">Meh</option>
+        <option value ="Yucky!">Not Yummy!</option>
+    </select> 
     <br><br>
+    
+    <label><b>Meal Description: </b></label><br>
+    <textarea rows="4" cols="50" name = "description" id = "description">
+    </textarea><br><br>
     <input type = "submit" value = "Create Meal">
 </form>
 <br><br>
-<a href = "/logout"><button>Log Out</button></a>

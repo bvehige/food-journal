@@ -1,6 +1,8 @@
+
 <% if flash.has?(:login_error) %>
-    <%= flash[:login_error] %>
+    <p style="color: red;"><b><%= flash[:login_error] %></b></p>
 <% end %>
+
 
 <h2>Log In to View Your Meal Journal</h2>
 
@@ -14,6 +16,5 @@
     <input type = "submit" value= "Log In">
     </form>
 <br>
-If you don't yet have an account please create one from the homepage. 
+If you don't have an account yet please <a href ="/signup">Sign Up.</a> 
 <br><br>
-<a href ="/"><button>Back To Homepage</button></a>
