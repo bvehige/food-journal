@@ -5,10 +5,10 @@ require 'rack-flash'
 class UsersController < ApplicationController
   
   get "/signup" do
-    if !session[:user_id]
-    erb :"/users/new"
+    if Helpers.is_logged_in?(session)
+        redirect '/meals'
     else
-    redirect '/meals'
+        erb :"/users/new"
     end
   end
 
@@ -30,7 +30,11 @@ class UsersController < ApplicationController
   end
 
   get "/login" do
-    erb :"users/login"
+    if Helpers.is_logged_in?(session)
+        redirect '/meals'
+    else
+        erb :"users/login"
+    end
   end
 
   post "/login" do

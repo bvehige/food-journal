@@ -18,6 +18,7 @@
     <% @user.meals.each do |meal| %>
             <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %> - Rating: <%= meal.rating %></li>
     <% end %>
+    <br>
     <a href = "/meals/new">Create a New Meal</a>
     <br>
 <% else %>
