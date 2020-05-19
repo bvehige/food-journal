@@ -13,6 +13,10 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do
+    if !!User.find_by(username: params["username"])
+        flash[:username_error] = "Username already exists.  Please enter a different Username"
+        redirect '/signup'
+    end
     params.each do |label, input|
         if input.empty?
         flash[:sign_up_alert] = "All inputs required. Please fill out the #{label} field."

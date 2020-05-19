@@ -5,6 +5,10 @@
 <p style="color: red;"><b><%= flash[:sign_up_alert] %></b></p>
 <% end %>
 
+<% if flash.has?(:username_error) %>
+<p style="color: red;"><b><%= flash[:username_error] %></b></p>
+<% end %>
+
 
 
 <h3>To create a new food journal please fill out and submit the following information.</h3>

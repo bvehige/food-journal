@@ -1,3 +1,4 @@
+
 <% if flash.has?(:created_meal_message) %>
 <p style="color: red;"><b><%=flash[:created_meal_message] %></b></p>
 <% end %>
@@ -9,15 +10,13 @@
 <% end %>
 <br><br>
 
-
 <h2>Welcome <%=@user.username%>!</h2>
 
 <h3><%=@user.username%>'s Meal Journal</h3>
 <br>
 <% if !@user.meals.empty? %> 
     <% @user.meals.each do |meal| %>
-        <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %> - Rating: <%= meal.rating %></li>
-        <br><br>
+            <li><a href = "/meals/<%= meal.id %>"><%= meal.name %></a> - <%= meal.date %> - Rating: <%= meal.rating %></li>
     <% end %>
     <a href = "/meals/new">Create a New Meal</a>
     <br>
