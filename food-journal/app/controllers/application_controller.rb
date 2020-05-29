@@ -14,10 +14,20 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    if Helpers.is_logged_in?(session)
+    if logged_in?(session)
       redirect '/meals'
     else
     erb :home
+    end
+  end
+
+  helpers do 
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      @user ||= User.find(session[:user_id])
     end
   end
 
