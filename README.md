@@ -1,4 +1,4 @@
-# food-journal
+# Food Journal
 Journal your food life for a better understanding of you.  
 
 Sinatra Food Journal A Sinatra-powered web application created to record food intake and meals.
